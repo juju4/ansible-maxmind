@@ -62,7 +62,7 @@
       when: not db1.stat.exists
 
     - copy: src=update-maxmind.sh dest=/usr/local/bin/update-maxmind.sh mode=0755
-    - cron: name="maxmind autoupdate" minute=0 hour=0
+    - name: cron task to update daily
+      cron: name="maxmind autoupdate" minute=0 hour=0
             user=root job="/usr/local/bin/update-maxmind.sh > /tmp/update_maxmind.log 2>&1"
-            cron_file=ansible_maxmind-autoupdate
 
