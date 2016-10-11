@@ -1,0 +1,4 @@
+## aide config for maxmind database
+/var/maxmind$ VarDir
+/var/maxmind/Geo.*\.dat$ InodeData-i-b
+/tmp/update_maxmind.log$ VarFile
