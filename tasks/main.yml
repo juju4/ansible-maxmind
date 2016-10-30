@@ -18,7 +18,8 @@
 ## hash are not really useful as files are updated regulary but if needed.
 - name: Maxmind directory
   file: path=/var/maxmind mode=0755 owner=root state=directory
-- stat: path=/var/maxmind/GeoIP.dat
+- name: check Geo db existence
+  stat: path=/var/maxmind/GeoIP.dat
   register: db1
 - name: Get Maxmind db
   get_url: url=http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
@@ -26,7 +27,8 @@
     mode=0444
 #    sha256sum=840f0d7c7beb3ae923db34644011cb3569360d08bdd5b45d994baff293d8835e
   when: not db1.stat.exists
-- stat: path=/var/maxmind/GeoIPv6.dat
+- name: check Geo db existence
+  stat: path=/var/maxmind/GeoIPv6.dat
   register: db2
 - name: Get Maxmind db
   get_url: url=http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
@@ -34,7 +36,8 @@
     mode=0444
 #    sha256sum=f4e3788703046aeea660988eeb322ec0d772674179e8400947f95fbe779a1f65
   when: not db2.stat.exists
-- stat: path=/var/maxmind/GeoLiteCity.dat
+- name: check Geo db existence
+  stat: path=/var/maxmind/GeoLiteCity.dat
   register: db3
 - name: Get Maxmind db
   get_url: url=http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
@@ -42,7 +45,8 @@
     mode=0444
 #    sha256sum=4b135aa121b658e5659382ddb392066d18da0508a21ffe9192d576e6e8946273
   when: not db3.stat.exists
-- stat: path=/var/maxmind/GeoLiteCityv6.dat
+- name: check Geo db existence
+  stat: path=/var/maxmind/GeoLiteCityv6.dat
   register: db4
 - name: Get Maxmind db
   get_url: url=http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
@@ -50,7 +54,8 @@
     mode=0444
 #    sha256sum=7a53044aa2d135eadbd969473200d2d5992e2db1d84e39809421d740a53f2e1c
   when: not db4.stat.exists
-- stat: path=/var/maxmind/GeoIPASNum.dat
+- name: check Geo db existence
+  stat: path=/var/maxmind/GeoIPASNum.dat
   register: db5
 - name: Get Maxmind db
   get_url: url=http://geolite.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz
@@ -58,7 +63,8 @@
     mode=0444
 #    sha256sum=ee72c32aeff0251cea3b757c93a64e7386f19de5e223bd39ddde02ed8b062467
   when: not db5.stat.exists
-- stat: path=/var/maxmind/GeoIPASNumv6.dat
+- name: check Geo db existence
+  stat: path=/var/maxmind/GeoIPASNumv6.dat
   register: db6
 - name: Get Maxmind db
   get_url: url=http://geolite.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
