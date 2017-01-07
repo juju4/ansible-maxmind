@@ -5,5 +5,5 @@
 #  vars:
 #    - a:
   roles:
-    - maxmind
+    - juju4.maxmind
 
