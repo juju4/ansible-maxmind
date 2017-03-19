@@ -1,5 +1,3 @@
 ---
 
-#maxmind_user: _maxmind
-myuser: vagrant
-
+maxmind_rootdir: /var/maxmind
