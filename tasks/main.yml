@@ -40,7 +40,7 @@
 
 - name: extract db
   command: "gunzip {{ maxmind_rootdir }}/{{ item }}.gz creates={{ maxmind_rootdir }}/{{ item }}"
-## 
+##
 #  unarchive:
 #    src: "{{ maxmind_rootdir }}/{{ item }}.gz"
 #    dest: "{{ maxmind_rootdir }}"
