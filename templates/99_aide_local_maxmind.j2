@@ -1,6 +1,9 @@
 # {{ ansible_managed }}
 ## aide config for maxmind database
 {{ maxmind_rootdir }}$ VarDir
+{{ maxmind_rootdir }}/download$ VarDir
 {{ maxmind_rootdir }}/Geo.*\.dat$ InodeData-i-b
+{{ maxmind_rootdir }}/download/Geo.*\.dat\.gz$ InodeData-i-b
 {{ maxmind_rootdir }}/Geo.*\.mmdb$ InodeData-i-b
+{{ maxmind_rootdir }}/download/Geo.*\.mmdb\.gz$ InodeData-i-b
 /tmp/update_maxmind.log$ VarFile

@@ -21,12 +21,14 @@
 ## hash are not really useful as files are updated regulary but if needed.
 - name: Maxmind directory
   file: "path={{ maxmind_rootdir }} mode=0755 owner=root state=directory"
+- name: Maxmind download directory
+  file: "path={{ maxmind_rootdir }}/download mode=0755 owner=root state=directory"
 
-## FIXME! not idempotent
+## Downloads to dedicated directory to allow get_url to remain idempotent
 - name: Get Maxmind databases
   get_url:
     url: "{{ item }}"
-    dest: "{{ maxmind_rootdir }}/{{ item | basename }}"
+    dest: "{{ maxmind_rootdir }}/download/{{ item | basename }}"
     mode: '0444'
   with_items:
     - http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
@@ -39,10 +41,12 @@
     - http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz
 
 - name: extract db
-  command: "gunzip {{ maxmind_rootdir }}/{{ item }}.gz creates={{ maxmind_rootdir }}/{{ item }}"
-##
+  shell: "gunzip -c {{ maxmind_rootdir }}/download/{{ item }}.gz > {{ maxmind_rootdir }}/{{ item }}"
+  args:
+    creates: "{{ maxmind_rootdir }}/{{ item }}"
+## unarchive only supports archives (tar/tgz/zip), not compressed data files
 #  unarchive:
-#    src: "{{ maxmind_rootdir }}/{{ item }}.gz"
+#    src: "{{ maxmind_rootdir }}/download/{{ item }}.gz"
 #    dest: "{{ maxmind_rootdir }}"
 #    remote_src: true
   with_items:
