@@ -9,6 +9,8 @@
     - geoip-database
     - geoip-database-extra
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  register: pkg_result
+  until: pkg_result is success
 
 - name: yum | uninstall maxmind package to avoid conflicts
   yum: name={{ item }} state=absent
@@ -16,7 +18,9 @@
     - GeoIP-GeoLite-data
     - geoipupdate
     - GeoIP-update
-  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_os_family == "RedHat"
+  register: pkg_result
+  until: pkg_result is success
 
 ## hash are not really useful as files are updated regulary but if needed.
 - name: Maxmind directory
@@ -67,9 +71,13 @@
 - name: apt | ensure cron is installed
   apt: name=cron state=present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  register: pkg_result
+  until: pkg_result is success
 - name: yum | ensure cron is installed
   yum: name=crontabs state=present
-  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_os_family == "RedHat"
+  register: pkg_result
+  until: pkg_result is success
 
 - name: cron task to update daily
   cron: name="maxmind autoupdate" minute=0 hour=0
@@ -77,8 +85,8 @@
         cron_file=ansible_maxmind-update
 
 - block:
-    - file: dest=/etc/aide/aide.conf.d state=directory mode=0755
+    - name: Debian | Ensure Aide config dir exists
+      file: dest=/etc/aide/aide.conf.d state=directory mode=0755
     - name: add additional aide HIDS configuration
       template: src=99_aide_local_maxmind.j2 dest=/etc/aide/aide.conf.d/99_aide_local_maxmind mode=0644
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
