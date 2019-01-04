@@ -50,6 +50,7 @@ $ vagrant ssh
 
 ## Troubleshooting & Known issues
 
+* As of Jan 2, 2019, [Maxmind discontinued geolite legacy](https://support.maxmind.com/geolite-legacy-discontinuation-notice/) and asked to use geolite2 files.
 
 ## License
 

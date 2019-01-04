@@ -31,11 +31,9 @@
     dest: "{{ maxmind_rootdir }}/download/{{ item | basename }}"
     mode: '0444'
   with_items:
-    - http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
-    - http://geolite.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz
