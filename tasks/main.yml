@@ -52,11 +52,9 @@
 #    dest: "{{ maxmind_rootdir }}"
 #    remote_src: true
   with_items:
-    - GeoIP.dat
     - GeoIPv6.dat
     - GeoLiteCity.dat
     - GeoLiteCityv6.dat
-    - GeoIPASNum.dat
     - GeoIPASNumv6.dat
     - GeoLite2-City.mmdb
     - GeoLite2-Country.mmdb
