@@ -36,7 +36,6 @@
     mode: '0444'
   with_items:
     - http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
-    - http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
     - http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz
@@ -53,7 +52,6 @@
 #    remote_src: true
   with_items:
     - GeoIPv6.dat
-    - GeoLiteCity.dat
     - GeoLiteCityv6.dat
     - GeoIPASNumv6.dat
     - GeoLite2-City.mmdb
