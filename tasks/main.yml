@@ -4,20 +4,22 @@
 
 ## official packages are handling one or two db
 - name: apt | uninstall maxmind package to avoid conflicts
-  apt: name={{ item }} state=absent
-  with_items:
-    - geoip-database
-    - geoip-database-extra
+  apt:
+    name:
+      - geoip-database
+      - geoip-database-extra
+    state: absent
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   register: pkg_result
   until: pkg_result is success
 
 - name: yum | uninstall maxmind package to avoid conflicts
-  yum: name={{ item }} state=absent
-  with_items:
-    - GeoIP-GeoLite-data
-    - geoipupdate
-    - GeoIP-update
+  yum:
+    name:
+      - GeoIP-GeoLite-data
+      - geoipupdate
+      - GeoIP-update
+    state: absent
   when: ansible_os_family == "RedHat"
   register: pkg_result
   until: pkg_result is success
