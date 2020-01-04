@@ -1,5 +1,10 @@
 [![Build Status - Master](https://travis-ci.org/juju4/ansible-maxmind.svg?branch=master)](https://travis-ci.org/juju4/ansible-maxmind)
 [![Build Status - Devel](https://travis-ci.org/juju4/ansible-maxmind.svg?branch=devel)](https://travis-ci.org/juju4/ansible-maxmind/branches)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+# DEPRECATED -> archived
+[Significant Changes to Accessing and Using GeoLite2 Databases, Maxmind](https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/)
+
 # Maxmind database ansible role
 
 A simple ansible role to setup maxmind database and update cron task on a system
